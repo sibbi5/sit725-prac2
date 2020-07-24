@@ -19,8 +19,6 @@
   },
   "homepage": "https://github.com/sibbi5/sit725-prac2#readme",
   "dependencies": {
-
     "express": "*"
-
   }
 }

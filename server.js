@@ -1,12 +1,6 @@
-const express = require('express')
-
-
-
-// var sentiment = new Sentiment();
-
-const app = express()
-
-const PORT=3000;
+const express = require('express');
+const app = express();
+const port = 3000;
 
 
 
@@ -14,8 +8,7 @@ const PORT=3000;
 
 app.use(express.static(__dirname + '/public'));
 
-
-app.get('/test',function(request,response){
+app.get('/test',function(req,res){
 
     console.log('Test has been hit')
 
@@ -23,62 +16,44 @@ app.get('/test',function(request,response){
 
 })
 
+let accounts=[
+    {id:1,name:'alex',deposit:5},
+    {id:2,name:'sarah',deposit:10},
+    {id:3,name:'jim',deposit:15}
+]
 
+let deposit=function(account_name){
 
-// this function takes two numbers, adds them together and returns the result
+    for(var i = 0; i < accounts.length; i += 1) {
+        // console.log("Inside the for loop");
+        // console.log(accounts[i].name);
+        // console.log(account_name);
+        if(accounts[i].name == account_name) {
+            // console.log("Inside the if");
+            console.log("deposit value", accounts[i].deposit);
+            deposit_amount = accounts[i].deposit;
+            // console.log("The end");
+        }
+    }
+    
+    // console.log("index position" , deposit)
 
-// ye works don't touch it
-
-let addition=function(num1,num2){
-
-    result=num1+num2;
-
-    return result
+    return deposit_amount;
 
 }
 
+app.get('/deposit',function(request,response){
+
+    let name=(request.query.name);
+    console.log("app funciton value", name);
+    let deposit_val = deposit(name);
+
+    response.send("The Deposit amount for " + name + " is " + deposit_val);
 
 
-let sentimentAnalysis=function(text){
-
-    var result = sentiment.analyze(text);
-
-    return result;
-
-}
-
-
-
-app.get('/adder',function(request,response){
-
-    let num1=parseInt(request.query.num1);
-
-    let num2=parseInt(request.query.num2);
-
-    let sum=addition(num1,num2);
-
-    response.send('The sum is'+sum);
 
 })
 
 
 
-app.get('/sentiment',function(request,response){
-
-    let text=request.query.text;
-
-    let analysis=sentimentAnalysis(text)
-
-    console.log(analysis)
-
-    response.json(analysis)
-
-})
-
-
-
-
-
- // start the server and listen on port 3000
-
-app.listen(PORT)
+app.listen(port)
