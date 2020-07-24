@@ -33,12 +33,12 @@ let deposit=function(account_name){
             console.log("deposit value", accounts[i].deposit);
             deposit_amount = accounts[i].deposit;
             // console.log("The end");
+            return deposit_amount;
         }
     }
     
     // console.log("index position" , deposit)
 
-    return deposit_amount;
 
 }
 
