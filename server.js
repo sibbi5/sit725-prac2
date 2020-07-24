@@ -32,7 +32,7 @@ let deposit=function(account_name){
             // console.log("Inside the if");
             console.log("deposit value", accounts[i].deposit);
             deposit_amount = accounts[i].deposit;
-            // console.log("The end");
+            
             return deposit_amount;
         }
     }
