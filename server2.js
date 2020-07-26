@@ -120,11 +120,9 @@ app.get('/deposit',function(request,response){
     // let deposit_val = deposit(name);
 
     response.send("The Deposit amount for " + name + " is " + deposit_val);
-
-
-
 })
 
-
-
 app.listen(port)
+
+// I would use linkedlist because it can be easily reorganized without changing the whole structure.
+// Size of the linkedlist can be extended as per the need, there is no limit for that.
